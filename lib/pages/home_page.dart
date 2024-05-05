@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 // import 'package:flutter/material.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 import 'package:flutter/cupertino.dart';
@@ -63,11 +64,16 @@ class _HomePageState extends State<HomePage> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: NetworkImage(_user!.photoURL!),
+                
               ),
+              shape: BoxShape.circle
             ),
           ),
+          const SizedBox(height: 15.00,),
           Text(_user!.email!),
+          const SizedBox(height: 15.00,),
           Text(_user!.displayName ?? ""),
+          const SizedBox(height: 15.00,),
           CupertinoButton.filled(onPressed: () => _auth.signOut(),child: const Text("Sign Out"), )
           // MaterialButton(
           //   color: Colors.red,
