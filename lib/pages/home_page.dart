@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 import 'package:sign_in_button/sign_in_button.dart';
-// import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,11 +27,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Google SignIn"),
+    return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(
+        leading: Icon(CupertinoIcons.person_2),
+        middle: Text("Codev", style: TextStyle(color: CupertinoColors.activeGreen),),
       ),
-      body: _user != null ? _userInfo() : _googleSignInButton(),
+      child: _user != null ? _userInfo() : _googleSignInButton(),
     );
   }
 
@@ -67,11 +68,12 @@ class _HomePageState extends State<HomePage> {
           ),
           Text(_user!.email!),
           Text(_user!.displayName ?? ""),
-          MaterialButton(
-            color: Colors.red,
-            child: const Text("Sign Out"),
-            onPressed: _auth.signOut,
-          )
+          CupertinoButton.filled(onPressed: () => _auth.signOut(),child: const Text("Sign Out"), )
+          // MaterialButton(
+          //   color: Colors.red,
+          //   child: const Text("Sign Out"),
+          //   onPressed: _auth.signOut,
+          // )
         ],
       ),
     );
