@@ -29,10 +29,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        leading: Icon(CupertinoIcons.person_2),
-        middle: Text("Codev", style: TextStyle(color: CupertinoColors.activeGreen),),
-      ),
       child: _user != null ? _userInfo() : _googleSignInButton(),
     );
   }
@@ -51,6 +47,51 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _userInfo() {
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        leading: IconButton(
+          onPressed:() {
+                showCupertinoDialog(
+                    context: context,
+                    builder: (BuildContext context) => CupertinoAlertDialog(
+                          title: Container(
+                            height: 100,
+                            width: 100,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: NetworkImage(_user!.photoURL!),
+                                ),
+                                shape: BoxShape.circle),
+                          ),
+                          content:
+                              Text("${_user!.displayName!}  ${_user!.email!}"),
+                          actions: [
+                            CupertinoDialogAction(
+                                isDestructiveAction: false,
+                                onPressed: () {
+                                  _auth.signOut();
+                                  Navigator.pop(context);
+                                },
+                                child: const Text("Sign out")),
+                            CupertinoDialogAction(
+                                isDestructiveAction: true,
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text("Cancel"))
+                          ],
+                        ));
+              },
+          icon: const Icon(CupertinoIcons.person)
+          ),
+        middle: const Text(
+          "Codev",
+          style: TextStyle(color: CupertinoColors.activeGreen),
+        ),
+      ),
+      child: Center(child: Text("Welcome to codev"),)
+    );
+    /*
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Column(
@@ -58,6 +99,7 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
+          
           Container(
             height: 100,
             width: 100,
@@ -83,6 +125,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
+    */
   }
 
   void _handleGoogleSignIn() {
