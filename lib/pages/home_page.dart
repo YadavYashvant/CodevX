@@ -1,3 +1,4 @@
+import 'package:codevx/widgets/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/material.dart';
@@ -48,9 +49,9 @@ class _HomePageState extends State<HomePage> {
 
   Widget _userInfo() {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        leading: IconButton(
-          onPressed:() {
+        navigationBar: CupertinoNavigationBar(
+          leading: IconButton(
+              onPressed: () {
                 showCupertinoDialog(
                     context: context,
                     builder: (BuildContext context) => CupertinoAlertDialog(
@@ -82,15 +83,15 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ));
               },
-          icon: const Icon(CupertinoIcons.person)
+              icon: const Icon(CupertinoIcons.person)),
+          middle: const Text(
+            "Codev",
+            style: TextStyle(color: CupertinoColors.activeGreen),
           ),
-        middle: const Text(
-          "Codev",
-          style: TextStyle(color: CupertinoColors.activeGreen),
         ),
-      ),
-      child: Center(child: Text("Welcome to codev"),)
-    );
+        child: const Center(
+          child: HomeScreen(),
+        ));
     /*
     return SizedBox(
       width: MediaQuery.of(context).size.width,
