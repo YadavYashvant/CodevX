@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
             height: screenHeight * 0.01,
           ),
           Align(
-            alignment: const AlignmentDirectional(0, 0),
+            alignment: Alignment.topLeft,
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -40,12 +40,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 1.5,
                     ),
                     children: const <TextSpan>[
-                      TextSpan(text: 'May the\n'),
+                      TextSpan(text: 'Welcome\n'),
                       TextSpan(
-                          text: 'open source ',
+                          text: 'To ',
                           style: TextStyle(
                               color: Color.fromARGB(255, 90, 107, 32))),
-                      TextSpan(text: 'be with you')
+                      TextSpan(text: 'Codev')
                     ]),
               ),
             ),
