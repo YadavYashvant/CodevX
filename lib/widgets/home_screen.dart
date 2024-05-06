@@ -9,42 +9,49 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   Widget build(BuildContext context) {
-
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
     return SingleChildScrollView(
-      child: Column(children: [
-        SizedBox(
-          height: screenHeight * 0.05,
-        ),
-        Align(
-          alignment: const AlignmentDirectional(-1, 0),
-          child: Container(
-            width: screenWidth * 0.68,
-                  margin: EdgeInsets.only(left: screenWidth * 0.05),
-                  child: RichText(
-                    text: TextSpan(
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: screenWidth * 0.1,
-                          fontWeight: FontWeight.bold,
-                          height: 1.5,
-                        ),
-                        children: const <TextSpan>[
-                          TextSpan(text: 'May the\n'),
-                          TextSpan(
-                              text: 'open source ',
-                              style: TextStyle(color: CupertinoColors.activeGreen)),
-                          TextSpan(text: 'be with you')
-                        ]),
-                  ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: screenHeight * 0.01,
           ),
-        )
-      ],),
+          Align(
+            alignment: const AlignmentDirectional(0, 0),
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: CupertinoColors.systemGreen),
+              padding: const EdgeInsets.all(16.0),
+              width: screenWidth * 0.70,
+              margin: EdgeInsets.only(left: screenWidth * 0.05),
+              child: RichText(
+                text: TextSpan(
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: screenWidth * 0.1,
+                      fontWeight: FontWeight.bold,
+                      height: 1.5,
+                    ),
+                    children: const <TextSpan>[
+                      TextSpan(text: 'May the\n'),
+                      TextSpan(
+                          text: 'open source ',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 90, 107, 32))),
+                      TextSpan(text: 'be with you')
+                    ]),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
