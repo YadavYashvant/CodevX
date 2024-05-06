@@ -9,6 +9,35 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void openPostBox() {
+    showDialog(
+      context: context, 
+    builder: (context) => const AlertDialog(
+      content: TextField(),
+    )
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: openPostBox,
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+/*
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -105,3 +134,4 @@ class MyListItem {
     required this.iconData,
   });
 }
+*/
