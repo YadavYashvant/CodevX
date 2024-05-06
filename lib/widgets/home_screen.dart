@@ -13,6 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    List demo = ["Yashvant", "Yashvant", "Yashvant", "Yashvant", "Yashvant"];
 
     return SingleChildScrollView(
       child: Column(
@@ -20,38 +21,87 @@ class _HomeScreenState extends State<HomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: screenHeight * 0.01,
+            height: screenHeight * 0.04,
           ),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: CupertinoColors.systemGreen),
-              padding: const EdgeInsets.all(16.0),
-              width: screenWidth * 0.70,
-              margin: EdgeInsets.only(left: screenWidth * 0.05),
-              child: RichText(
-                text: TextSpan(
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: screenWidth * 0.1,
-                      fontWeight: FontWeight.bold,
-                      height: 1.5,
-                    ),
-                    children: const <TextSpan>[
-                      TextSpan(text: 'Welcome\n'),
-                      TextSpan(
-                          text: 'To ',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 90, 107, 32))),
-                      TextSpan(text: 'Codev')
-                    ]),
-              ),
-            ),
-          )
+          ListView(
+            shrinkWrap: true,
+            children: <Widget>[
+              // Step 3: Populate the ListView with instances of your custom list item class
+              _buildListItem(MyListItem(
+                title: 'Item 1',
+                subtitle: 'Subtitle 1',
+                iconData: CupertinoIcons.star,
+              )),
+              _buildListItem(MyListItem(
+                title: 'Item 2',
+                subtitle: 'Subtitle 2',
+                iconData: CupertinoIcons.circle,
+              )),
+              _buildListItem(MyListItem(
+                title: 'Item 3',
+                subtitle: 'Subtitle 3',
+                iconData: CupertinoIcons.square,
+              )),
+              _buildListItem(MyListItem(
+                title: 'Item 3',
+                subtitle: 'Subtitle 3',
+                iconData: CupertinoIcons.square,
+              )),
+              _buildListItem(MyListItem(
+                title: 'Item 3',
+                subtitle: 'Subtitle 3',
+                iconData: CupertinoIcons.square,
+              )),
+              _buildListItem(MyListItem(
+                title: 'Item 3',
+                subtitle: 'Subtitle 3',
+                iconData: CupertinoIcons.square,
+              )),
+              _buildListItem(MyListItem(
+                title: 'Item 3',
+                subtitle: 'Subtitle 3',
+                iconData: CupertinoIcons.square,
+              )),
+              _buildListItem(MyListItem(
+                title: 'Item 3',
+                subtitle: 'Subtitle 3',
+                iconData: CupertinoIcons.square,
+              )),
+              _buildListItem(MyListItem(
+                title: 'Item 3',
+                subtitle: 'Subtitle 3',
+                iconData: CupertinoIcons.square,
+              )),
+              // Add more items as needed
+            ],
+          ),
         ],
       ),
     );
   }
+
+  Widget _buildListItem(MyListItem item) {
+    return Card(
+      child: ListTile(
+        leading: Icon(item.iconData),
+        title: Text(item.title),
+        subtitle: Text(item.subtitle),
+        onTap: () {
+          // Add any onTap functionality here
+        },
+      ),
+    );
+  }
+}
+
+class MyListItem {
+  final String title;
+  final String subtitle;
+  final IconData iconData;
+
+  MyListItem({
+    required this.title,
+    required this.subtitle,
+    required this.iconData,
+  });
 }

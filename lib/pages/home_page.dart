@@ -38,10 +38,9 @@ class _HomePageState extends State<HomePage> {
     return Center(
       child: SizedBox(
         height: 50,
-        child: SignInButton(
-          Buttons.google,
-          text: "Sign up with Google",
+        child: CupertinoButton.filled(
           onPressed: _handleGoogleSignIn,
+          child: const Text("Sign up with Google"),
         ),
       ),
     );
@@ -89,9 +88,7 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(color: CupertinoColors.activeGreen),
           ),
         ),
-        child: const Center(
-          child: HomeScreen(),
-        ));
+        child: const HomeScreen());
     /*
     return SizedBox(
       width: MediaQuery.of(context).size.width,
